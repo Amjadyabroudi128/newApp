@@ -35,18 +35,39 @@ class _MyHomePageState extends State<MyHomePage> {
           decoration: const InputDecoration(border: InputBorder.none),
         ),
       ),
-      body: Center(
-
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            Text(
-                "This is a new app "
+      body: ListView.builder(
+        itemCount: entries.length,
+        itemBuilder: (_, i) {
+          final e = entries[i];
+          return Card(
+            child: ListTile(
+              title: Text("${e.text} 🩷"),
+              subtitle: Text("${e.done}/${e.total}"),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.remove),
+                    onPressed: () {
+                      setState(() {
+                        if (e.done > 0) e.done--;
+                      });
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.add),
+                    onPressed: () {
+                      setState(() {
+                        if (e.done < e.total) e.done++;
+                      });
+                    },
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          );
+        },
       ),
-
     );
   }
 }
