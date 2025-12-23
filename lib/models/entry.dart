@@ -1,13 +1,7 @@
 class Entry {
-  String name;     // SANS
-  String place;    // L.A
-  int done;        // 0
-  int total;       // 4
+  String text; // "SAINS - L.A"
+  int done;
+  int total;
 
-  Entry({
-    required this.name,
-    required this.place,
-    required this.done,
-    required this.total,
-  });
+  Entry(this.text, this.done, this.total);
 }
