@@ -53,27 +53,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
 
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.remove),
-                    onPressed: () {
-                      setState(() {
-                        if (e.done > 0) e.done--;
-                      });
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.add),
-                    onPressed: () {
-                      setState(() {
-                        if (e.done < e.total) e.done++;
-                      });
-                    },
-                  ),
-                ],
-              ),
             ),
           );
         },
@@ -121,13 +100,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     if (result != true) return;
-
-    final newDone = int.tryParse(doneController.text) ?? e.done;
-    final newTotal = int.tryParse(totalController.text) ?? e.total;
+    final newDone = int.tryParse(doneController.text.trim()) ?? e.done;
+    final newTotal = int.tryParse(totalController.text.trim()) ?? e.total;
 
     setState(() {
-      e.total = newTotal < 0 ? 0 : newTotal;
-      e.done = newDone.clamp(0, e.total);
+      e.total = newTotal;
+      e.done = newDone;
     });
   }
 
