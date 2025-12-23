@@ -41,8 +41,18 @@ class _MyHomePageState extends State<MyHomePage> {
           final e = entries[i];
           return Card(
             child: ListTile(
-              title: Text("${e.text} 🩷"),
-              subtitle: Text("${e.done}/${e.total}"),
+              title: Text(e.text),
+              subtitle: GestureDetector(
+                onTap: () => _editNumberDialog(e),
+                child: Text(
+                  "${e.done}/${e.total}",
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -70,4 +80,55 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+  Future<void> _editNumberDialog(Entry e) async {
+    final doneController =
+    TextEditingController(text: e.done.toString());
+    final totalController =
+    TextEditingController(text: e.total.toString());
+
+    final result = await showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Edit numbers"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: doneController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: "Done"),
+              ),
+              TextField(
+                controller: totalController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: "Total"),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text("Cancel"),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text("Save"),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (result != true) return;
+
+    final newDone = int.tryParse(doneController.text) ?? e.done;
+    final newTotal = int.tryParse(totalController.text) ?? e.total;
+
+    setState(() {
+      e.total = newTotal < 0 ? 0 : newTotal;
+      e.done = newDone.clamp(0, e.total);
+    });
+  }
+
 }
