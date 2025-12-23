@@ -26,7 +26,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hello guys "),
+        title: TextField(
+          controller: titleController,
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+          decoration: const InputDecoration(border: InputBorder.none),
+        ),
       ),
       body: Center(
 
