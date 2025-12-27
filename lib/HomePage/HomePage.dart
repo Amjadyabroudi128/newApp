@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/entry.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key,});
@@ -13,14 +14,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final titleController =
   TextEditingController(text: "💖 WEDNESDAY 💖");
 
-  final List<Entry> entries = [
-    Entry("SAINS - L.A", 0, 4),
-    Entry("C👀P - Kingsway", 0, 4),
-    Entry("B👀TS - Reigate", 2, 4),
-    Entry("C👀P - Southwater", 0, 4),
-    Entry("COUNTY MALL - Crawley", 1, 4),
-    Entry("WELCOME - Lancing", 0, 4),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +38,18 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text(e.text),
               subtitle: GestureDetector(
                 onTap: () => _editNumberDialog(e),
-                child: Text(
-                  "${e.done}/${e.total}",
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Row(
+                  children: [
+                    Text(
+                      "${e.done}/${e.total}",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(width: 9,),
+                    if(e.done >= e.total) FaIcon(FontAwesomeIcons.crosshairs,color: Colors.red,)
+                  ],
                 ),
               ),
 
