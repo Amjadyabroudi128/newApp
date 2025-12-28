@@ -1,0 +1,170 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
+
+import '../models/entry.dart';
+
+class DayDetailsScreen extends StatefulWidget {
+  final DateTime selectedDate;
+
+  const DayDetailsScreen({super.key, required this.selectedDate});
+
+  @override
+  State<DayDetailsScreen> createState() => _DayDetailsScreenState();
+}
+
+class _DayDetailsScreenState extends State<DayDetailsScreen> {
+  List<Entry> entries = [];
+
+  @override
+  Widget build(BuildContext context) {
+    // Format the date to show day name and date
+    final dayName = DateFormat('EEEE').format(widget.selectedDate);
+    final dateFormatted = DateFormat('MMM dd, yyyy').format(widget.selectedDate);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              dayName.toUpperCase(),
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              dateFormatted,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: entries.isEmpty
+          ? const Center(
+        child: Text(
+          'No entries for this day',
+          style: TextStyle(fontSize: 16, color: Colors.grey),
+        ),
+      )
+          : ListView.builder(
+        itemCount: entries.length,
+        itemBuilder: (_, i) {
+          final e = entries[i];
+          return Card(
+            child: ListTile(
+              title: Text(e.text),
+              subtitle: GestureDetector(
+                onTap: () => _editNumberDialog(e),
+                child: Row(
+                  children: [
+                    Text(
+                      "${e.done}/${e.total}",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(width: 9),
+                    if(e.done >= e.total) FaIcon(FontAwesomeIcons.crosshairs,color: Colors.red,)
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addEntry,
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+
+  Future<void> _addEntry() async {
+    final textController = TextEditingController();
+
+    final result = await showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Add Entry"),
+          content: TextField(
+            controller: textController,
+            decoration: const InputDecoration(labelText: "Entry text"),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text("Cancel"),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text("Add"),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (result != true) return;
+    final text = textController.text.trim();
+    if (text.isEmpty) return;
+
+    setState(() {
+      entries.add(Entry( text,0,4));
+    });
+  }
+
+  Future<void> _editNumberDialog(Entry e) async {
+    final doneController = TextEditingController(text: e.done.toString());
+    final totalController = TextEditingController(text: e.total.toString());
+
+    final result = await showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Edit numbers"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: doneController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: "Done"),
+              ),
+              TextField(
+                controller: totalController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: "Total"),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text("Cancel"),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text("Save"),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (result != true) return;
+    final newDone = int.tryParse(doneController.text.trim()) ?? e.done;
+    final newTotal = int.tryParse(totalController.text.trim()) ?? e.total;
+
+    setState(() {
+      e.total = newTotal;
+      e.done = newDone;
+    });
+  }
+}
