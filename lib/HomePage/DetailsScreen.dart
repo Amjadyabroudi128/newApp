@@ -91,10 +91,10 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("Add Entry"),
+          title: const Text("Add Place"),
           content: TextField(
             controller: textController,
-            decoration: const InputDecoration(labelText: "Entry text"),
+            decoration: const InputDecoration(labelText: "Place text"),
           ),
           actions: [
             TextButton(
@@ -127,7 +127,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("Edit numbers"),
+          title: const Text("Edit target"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
