@@ -54,23 +54,22 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
           : ListView.builder(
         itemCount: entries.length,
         itemBuilder: (_, i) {
-          final e = entries[i];
           return Card(
             child: ListTile(
-              title: Text(e.text),
+              title: Text(entries[i].text),
               subtitle: GestureDetector(
-                onTap: () => _editNumberDialog(e),
+                onTap: () => _editNumberDialog(entries[i]),
                 child: Row(
                   children: [
                     Text(
-                      "${e.done}/${e.total}",
+                      "${entries[i].done}/${entries[i].total}",
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(width: 9),
-                    if(e.done >= e.total) FaIcon(FontAwesomeIcons.crosshairs,color: Colors.red,)
+                    if(entries[i].done >= entries[i].total) FaIcon(FontAwesomeIcons.crosshairs,color: Colors.red,)
                   ],
                 ),
               ),
