@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:to_be_named/components/kTextBtn.dart';
 
 import '../models/entry.dart';
 
@@ -144,8 +145,8 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
             ],
           ),
           actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context, false),
+            MyTextBtn(
+              pressMe: () => Navigator.pop(context, false),
               child: const Text("Cancel"),
             ),
             FilledButton(
