@@ -149,8 +149,8 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
               pressMe: () => Navigator.pop(context, false),
               child: const Text("Cancel"),
             ),
-            FilledButton(
-              onPressed: () => Navigator.pop(context, true),
+            MyTextBtn(
+              pressMe: () => Navigator.pop(context, true),
               child: const Text("Save"),
             ),
           ],
