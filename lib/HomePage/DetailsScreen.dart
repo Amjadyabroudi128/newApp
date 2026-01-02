@@ -94,6 +94,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
+          actionsAlignment: .spaceAround,
           title: const Text("Add Place"),
           content: TextField(
             controller: textController,
