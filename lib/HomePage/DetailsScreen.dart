@@ -90,6 +90,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
     final textController = TextEditingController();
 
     final result = await showDialog<bool>(
+      barrierDismissible: false,
       context: context,
       builder: (context) {
         return AlertDialog(
