@@ -100,8 +100,8 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
             decoration: const InputDecoration(labelText: "Place text"),
           ),
           actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context, false),
+            MyTextBtn(
+              pressMe: () => Navigator.pop(context, false),
               child: const Text("Cancel"),
             ),
             FilledButton(
