@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:to_be_named/components/kTextBtn.dart';
 import 'package:to_be_named/components/kTextField.dart';
 
 import '../models/entry.dart';
@@ -148,13 +147,13 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
             ],
           ),
           actions: [
-            MyTextBtn(
-              pressMe: () => Navigator.pop(context, false),
-              child: const Text("Cancel"),
+            GestureDetector(
+              onTap: () => Navigator.pop(context, false),
+              child: Text("Cancel"),
             ),
-            MyTextBtn(
-              pressMe: () => Navigator.pop(context, true),
-              child: const Text("Save"),
+            GestureDetector(
+              onTap: () => Navigator.pop(context, true),
+              child: Text("Save", style: TextStyle(color: Colors.green),),
             ),
           ],
         );
