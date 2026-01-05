@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:to_be_named/components/kTextField.dart';
+import 'package:to_be_named/core/Colors.dart';
 
 import '../models/entry.dart';
 
@@ -106,7 +107,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
             ),
             GestureDetector(
               onTap: () => Navigator.pop(context, true),
-              child: Text("Save", style: TextStyle(color: Colors.green),),
+              child: Text("Save", style: TextStyle(color: MyColors.save),),
             ),
           ],
         );
@@ -153,7 +154,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
             ),
             GestureDetector(
               onTap: () => Navigator.pop(context, true),
-              child: Text("Save", style: TextStyle(color: Colors.green),),
+              child: Text("Save", style: TextStyle(color: MyColors.save),),
             ),
           ],
         );
