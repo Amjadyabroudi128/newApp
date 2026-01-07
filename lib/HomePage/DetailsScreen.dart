@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:to_be_named/components/kTextField.dart';
 import 'package:to_be_named/core/Colors.dart';
 
+import '../components/myToast.dart';
 import '../models/entry.dart';
 
 class DayDetailsScreen extends StatefulWidget {
@@ -58,7 +59,10 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
         itemBuilder: (_, i) {
           return Card(
             child: ListTile(
-              title: Text(entries[i].text),
+              title: GestureDetector(
+                child: Text(entries[i].text),
+                onTap: () => editPlaceName(entries[i])
+              ),
               subtitle: GestureDetector(
                 onTap: () => _editNumberDialog(entries[i]),
                 child: Row(
@@ -85,7 +89,50 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
       ),
     );
   }
+  Future<void> editPlaceName(Entry e) async {
+    final namePlace = TextEditingController(text: e.text.toString());
+    await showDialog(context: context,
+      builder: (context) {
+      return AlertDialog(
+        title: const Text("Edit place"),
+        content: TextField(
+          controller: namePlace,
+          decoration: const InputDecoration(labelText: "Place name"),
+        ),
+        actions: [
+          GestureDetector(
+            onTap: () => Navigator.pop(context, false),
+            child: const Text("Cancel"),
+          ),
+          GestureDetector(
+            onTap: () {
+              final newText = namePlace.text.trim();
+              if(newText.isEmpty) {
+                myToast("Can't be empty");
+              } else if (newText == e.text) {
+                myToast("please edit it");
+              } else {
+                setState(() {
+                  e.text = newText;
+                });
+              }
+              // newText.isEmpty ?  : newText == namePlace.text.trim() ? myToast("Please edit it")
+              //     : setState(() {
+              //
+              //     });
+              Navigator.pop(context, true);
+            },
+            child: Text(
+              "Save",
+              style: TextStyle(color: MyColors.save),
+            ),
+          ),
 
+        ],
+      );
+      }
+    );
+  }
   Future<void> _addEntry() async {
     final textController = TextEditingController();
 
