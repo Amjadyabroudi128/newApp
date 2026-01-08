@@ -116,10 +116,6 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
                   e.text = newText;
                 });
               }
-              // newText.isEmpty ?  : newText == namePlace.text.trim() ? myToast("Please edit it")
-              //     : setState(() {
-              //
-              //     });
               Navigator.pop(context, true);
             },
             child: Text(
