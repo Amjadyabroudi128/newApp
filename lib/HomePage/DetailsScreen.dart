@@ -75,7 +75,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
                       ),
                     ),
                     const SizedBox(width: 9),
-                    if(entries[i].done >= entries[i].total) FaIcon(FontAwesomeIcons.crosshairs,color: Colors.red,)
+                    if(entries[i].done >= entries[i].total) FaIcon(FontAwesomeIcons.crosshairs,color: MyColors.crossHair)
                   ],
                 ),
               ),
