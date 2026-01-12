@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:to_be_named/components/kTextField.dart';
 import 'package:to_be_named/core/Colors.dart';
+import 'package:to_be_named/core/textStlyes.dart';
 
 import '../components/myToast.dart';
 import '../models/entry.dart';
@@ -48,10 +49,10 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
         ),
       ),
       body: entries.isEmpty
-          ? const Center(
+          ?  Center(
         child: Text(
           'No entries for this day',
-          style: TextStyle(fontSize: 16, color: Colors.grey),
+          style: MyTextStyles.empty,
         ),
       )
           : ListView.builder(
