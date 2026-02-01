@@ -4,4 +4,5 @@ class MyColors {
   static Color toastMessage = Colors.white;
   static Color toastBackGround = Colors.black54;
   static Color crossHair = Colors.red;
+  static Color dates = Colors.teal;
 }
