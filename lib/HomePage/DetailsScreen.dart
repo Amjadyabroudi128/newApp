@@ -96,9 +96,9 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
       builder: (context) {
       return AlertDialog(
         title: const Text("Edit place"),
-        content: TextField(
-          controller: namePlace,
-          decoration: const InputDecoration(labelText: "Place name"),
+        content: MyField(
+          myController: namePlace,
+          myDecoration: const InputDecoration(labelText: "Place name"),
         ),
         actions: [
           GestureDetector(
