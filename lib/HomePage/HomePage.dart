@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:to_be_named/core/Colors.dart';
 import 'DetailsScreen.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -33,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: TableCalendar(
           calendarStyle: CalendarStyle(
             selectedDecoration: BoxDecoration(
-                color: Colors.teal,
+                color: MyColors.dates,
                 shape: BoxShape.circle
             ),
           ),
