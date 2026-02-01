@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:to_be_named/components/kTextField.dart';
 import 'package:to_be_named/core/Colors.dart';
+import 'package:to_be_named/core/icons.dart';
 import 'package:to_be_named/core/textStlyes.dart';
 
 import '../components/myToast.dart';
@@ -86,7 +87,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addEntry,
-        child: const Icon(Icons.add),
+        child: MyIcons.addBtn,
       ),
     );
   }
