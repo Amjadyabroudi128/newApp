@@ -29,20 +29,20 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: .start,
           children: [
             Text(
               dayName.toUpperCase(),
               style: const TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
+                fontWeight: .bold,
               ),
             ),
             Text(
               dateFormatted,
               style: const TextStyle(
                 fontSize: 14,
-                fontWeight: FontWeight.normal,
+                fontWeight: .normal,
               ),
             ),
           ],
