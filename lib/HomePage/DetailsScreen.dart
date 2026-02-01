@@ -177,16 +177,16 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
         return AlertDialog(
           title: const Text("Edit target"),
           content: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: .min,
             children: [
               MyField(
                 myController: doneController,
-                type: TextInputType.number,
+                type: .number,
                 myDecoration: const InputDecoration(labelText: "Done"),
               ),
               MyField(
                 myController: totalController,
-                type: TextInputType.number,
+                type: .number,
                 myDecoration: const InputDecoration(labelText: "Total"),
               ),
             ],
