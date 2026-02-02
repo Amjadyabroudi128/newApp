@@ -141,9 +141,9 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
         return AlertDialog(
           actionsAlignment: .spaceAround,
           title: const Text("Add Place"),
-          content: TextField(
-            controller: textController,
-            decoration: const InputDecoration(labelText: "Place text"),
+          content: MyField(
+            myController: textController,
+            myDecoration: const InputDecoration(labelText: "Place text"),
           ),
           actions: [
             GestureDetector(
