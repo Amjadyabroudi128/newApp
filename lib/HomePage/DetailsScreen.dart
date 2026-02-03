@@ -34,10 +34,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
           children: [
             Text(
               dayName.toUpperCase(),
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: .bold,
-              ),
+              style: MyTextStyles.dayName,
             ),
             Text(
               dateFormatted,
