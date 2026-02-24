@@ -26,14 +26,24 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
     // Format the date to show day name and date
     final dayName = DateFormat('EEEE').format(widget.selectedDate);
     final dateFormatted = DateFormat('MMM dd, yyyy').format(widget.selectedDate);
+    String displayDay = dayName;
+    switch (dayName) {
+      case "Tuesday":
+        displayDay = "Tuesday innit";
+        break;
+      case "Friday":
+        displayDay = "Fri-yay 😎";
+        break;
+      default:
+    }
 
-    return Scaffold(
+        return Scaffold(
       appBar: AppBar(
         title: Column(
           crossAxisAlignment: .start,
           children: [
             Text(
-              dayName.toUpperCase(),
+              displayDay,
               style: MyTextStyles.dayName,
             ),
             Text(
