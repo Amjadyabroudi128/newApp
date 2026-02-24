@@ -80,7 +80,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
                       "${entries[i].done}/${entries[i].total}",
                       style: const TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: .bold,
                       ),
                     ),
                     const SizedBox(width: 9),
