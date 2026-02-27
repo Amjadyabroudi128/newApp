@@ -31,6 +31,9 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
       case "Tuesday":
         displayDay = "Tuesday innit";
         break;
+      case "Thursday":
+        displayDay = "Thurs-whey";
+        break;
       case "Friday":
         displayDay = "Fri-yay 😎";
         break;
