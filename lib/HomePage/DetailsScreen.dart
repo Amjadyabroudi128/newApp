@@ -28,6 +28,9 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
     final dateFormatted = DateFormat('MMM dd, yyyy').format(widget.selectedDate);
     String displayDay = dayName;
     switch (dayName) {
+      case "Monday":
+        displayDay = "Happy Monday";
+        break;
       case "Tuesday":
         displayDay = "Tuesday innit";
         break;
