@@ -57,10 +57,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
             ),
             Text(
               dateFormatted,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: .normal,
-              ),
+              style: MyTextStyles.dateFormat,
             ),
           ],
         ),
