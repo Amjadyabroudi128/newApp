@@ -6,4 +6,8 @@ class MyTextStyles {
     fontSize: 20,
     fontWeight: .bold,
   );
+static TextStyle dateFormat = TextStyle(
+  fontSize: 14,
+  fontWeight: .normal,
+  );
 }
