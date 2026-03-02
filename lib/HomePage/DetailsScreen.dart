@@ -119,15 +119,14 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
           GestureDetector(
             onTap: () {
               final newText = namePlace.text.trim();
-              if(newText.isEmpty) {
-                myToast("Can't be empty");
-              } else if (newText == e.text) {
-                myToast("please edit it");
-              } else {
+              newText.isEmpty ? myToast("Can't be empty") :
+              newText == e.text ? myToast("please edit it")
+                  : () {
                 setState(() {
                   e.text = newText;
                 });
-              }
+                Navigator.pop(context, true);
+              }();
               Navigator.pop(context, true);
             },
             child: Text(
