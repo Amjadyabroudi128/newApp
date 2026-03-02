@@ -84,10 +84,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
                   children: [
                     Text(
                       "${entries[i].done}/${entries[i].total}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: .bold,
-                      ),
+                      style: MyTextStyles.total
                     ),
                     const SizedBox(width: 9),
                     if(entries[i].done >= entries[i].total) MyIcons.cross
