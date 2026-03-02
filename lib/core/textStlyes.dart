@@ -10,4 +10,8 @@ static TextStyle dateFormat = TextStyle(
   fontSize: 14,
   fontWeight: .normal,
   );
+  static TextStyle total = TextStyle(
+    fontSize: 16,
+    fontWeight: .normal,
+  );
 }
