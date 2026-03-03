@@ -7,4 +7,5 @@ import 'Colors.dart';
 class MyIcons {
   static Icon addBtn = Icon(Icons.add);
   static Icon cross = FaIcon(FontAwesomeIcons.crosshairs,color: MyColors.crossHair);
+  static Icon delete = Icon(Icons.delete);
 }
