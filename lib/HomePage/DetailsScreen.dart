@@ -76,7 +76,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
         itemBuilder: (_, i) {
           return Dismissible(
             background: Container(
-              color: Colors.red,
+              color: MyColors.delete,
               child: Icon(Icons.delete),
             ),
             key: ValueKey(entries[i]),
