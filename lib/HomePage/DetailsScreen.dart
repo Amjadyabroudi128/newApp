@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -72,23 +74,35 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
           : ListView.builder(
         itemCount: entries.length,
         itemBuilder: (_, i) {
-          return Card(
-            child: ListTile(
-              title: GestureDetector(
-                child: Text(entries[i].text),
-                onTap: () => editPlaceName(entries[i])
-              ),
-              subtitle: GestureDetector(
-                onTap: () => _editNumberDialog(entries[i]),
-                child: Row(
-                  children: [
-                    Text(
-                      "${entries[i].done}/${entries[i].total}",
-                      style: MyTextStyles.total
-                    ),
-                    const SizedBox(width: 9),
-                    if(entries[i].done >= entries[i].total) MyIcons.cross
-                  ],
+          return Dismissible(
+            background: Container(
+              color: Colors.red,
+              child: Icon(Icons.delete),
+            ),
+            key: ValueKey(entries[i]),
+            onDismissed: (DismissDirection direction){
+              setState(() {
+                entries.removeAt(i);
+              });
+            },
+            child: Card(
+              child: ListTile(
+                title: GestureDetector(
+                  child: Text(entries[i].text),
+                  onTap: () => editPlaceName(entries[i])
+                ),
+                subtitle: GestureDetector(
+                  onTap: () => _editNumberDialog(entries[i]),
+                  child: Row(
+                    children: [
+                      Text(
+                        "${entries[i].done}/${entries[i].total}",
+                        style: MyTextStyles.total
+                      ),
+                      const SizedBox(width: 9),
+                      if(entries[i].done >= entries[i].total) MyIcons.cross
+                    ],
+                  ),
                 ),
               ),
             ),
