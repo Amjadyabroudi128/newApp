@@ -77,7 +77,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
           return Dismissible(
             background: Container(
               color: MyColors.delete,
-              child: Icon(Icons.delete),
+              child: MyIcons.delete,
             ),
             key: ValueKey(entries[i]),
             onDismissed: (DismissDirection direction){
