@@ -47,6 +47,9 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
       case "Saturday":
         displayDay = "Saturn-way";
         break;
+      case "Sunday":
+        displayDay = "Fun Day";
+        break;
       default:
     }
 
