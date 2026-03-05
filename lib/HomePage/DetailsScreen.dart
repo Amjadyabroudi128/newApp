@@ -50,9 +50,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
       case "Sunday":
         displayDay = "Fun Day";
         break;
-      default:
     }
-
         return Scaffold(
       appBar: AppBar(
         title: Column(
