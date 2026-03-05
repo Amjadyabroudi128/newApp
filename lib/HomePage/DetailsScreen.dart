@@ -84,9 +84,13 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
             ),
             key: ValueKey(entries[i]),
             onDismissed: (DismissDirection direction){
+              final removedEntry = entries[i].text;
+
               setState(() {
                 entries.removeAt(i);
               });
+              myToast("$removedEntry removed");
+
             },
             child: Card(
               child: ListTile(
