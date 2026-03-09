@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Colors.dart';
+
 class MyTextStyles {
   static TextStyle empty = TextStyle(fontSize: 16, color: Colors.grey);
   static TextStyle dayName = TextStyle(
@@ -14,4 +16,5 @@ static TextStyle dateFormat = TextStyle(
     fontSize: 16,
     fontWeight: .normal,
   );
+  static TextStyle save = TextStyle(color: MyColors.save);
 }
