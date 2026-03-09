@@ -152,7 +152,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
             },
             child: Text(
               "Save",
-              style: TextStyle(color: MyColors.save),
+              style: MyTextStyles.save,
             ),
           ),
 
