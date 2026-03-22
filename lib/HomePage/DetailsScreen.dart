@@ -219,7 +219,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
               MyField(
                 myController: totalController,
                 type: .number,
-                myDecoration: const InputDecoration(labelText: "Total"),
+                myDecoration:  MyDecoration.build(label: "Total"),
               ),
             ],
           ),
