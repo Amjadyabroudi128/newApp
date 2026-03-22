@@ -174,7 +174,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
           title: const Text("Add Place"),
           content: MyField(
             myController: textController,
-            myDecoration: const InputDecoration(labelText: "Place text"),
+            myDecoration:  MyDecoration.build(label: "Place text"),
           ),
           actions: [
             GestureDetector(
