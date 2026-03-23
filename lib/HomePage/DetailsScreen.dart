@@ -183,7 +183,7 @@ class _DayDetailsScreenState extends State<DayDetailsScreen> {
             ),
             GestureDetector(
               onTap: () => Navigator.pop(context, true),
-              child: Text("Save", style: TextStyle(color: MyColors.save),),
+              child: Text("Save", style: MyTextStyles.save,),
             ),
           ],
         );
